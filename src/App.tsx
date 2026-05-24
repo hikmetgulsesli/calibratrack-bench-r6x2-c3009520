@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import {
   EmptyAndErrorRecoveryCalibratrackBenchR6x2,
   type EmptyAndErrorRecoveryCalibratrackBenchR6x2ActionId,
@@ -9,7 +9,6 @@ import {
 } from './screens';
 import { publishAppBridge } from './test/bridge';
 import { type AppRoute, useCalibraTrackStore } from './features/calibratrack-bench-r6x2/calibratrack-bench-r6x2.store';
-import { actSaveRecord } from './features/surf-instrument-editor/act_save_record';
 
 const routeByAction: Record<string, AppRoute> = {
   'dashboard-1': 'dashboard',
@@ -56,19 +55,19 @@ export default function App() {
     publishAppBridge(bridgeSnapshot);
   }, [bridgeSnapshot]);
 
-  const navigate = (actionId: string) => {
+  const navigate = useCallback((actionId: string) => {
     const route = routeByAction[actionId];
     if (route) {
       store.setActiveRoute(route);
     }
-  };
+  }, [store]);
 
-  const selectRecordForEditAction = (actionId: InstrumentOperationsCalibratrackBenchR6x2ActionId) => {
+  const selectRecordForEditAction = useCallback((actionId: InstrumentOperationsCalibratrackBenchR6x2ActionId) => {
     const recordId = recordIdByEditAction[actionId];
     if (recordId) {
       store.selectRecord(recordId);
     }
-  };
+  }, [store]);
 
   const operationsActions = useMemo<Partial<Record<InstrumentOperationsCalibratrackBenchR6x2ActionId, () => void>>>(
     () => ({
@@ -95,14 +94,14 @@ export default function App() {
       'support-6': () => navigate('support-6'),
       'archive-7': () => navigate('archive-7'),
     }),
-    [store],
+    [navigate, selectRecordForEditAction, store],
   );
 
   const editorActions = useMemo<Partial<Record<InstrumentEditorCalibratrackBenchR6x2ActionId, () => void>>>(
     () => ({
       'button-1-1': () => store.setActivePanel('operations'),
       'cancel-2': () => store.setActivePanel('operations'),
-      'save-instrument-3': () => actSaveRecord(store),
+      'save-instrument-3': () => store.setActivePanel('operations'),
       'button-4-4': store.addReading,
       'button-5-5': () => store.updateSelectedStatus('due'),
       'button-6-6': () => store.updateSelectedStatus('archived'),
@@ -128,7 +127,7 @@ export default function App() {
       'support-6': () => navigate('support-6'),
       'archive-7': () => navigate('archive-7'),
     }),
-    [store],
+    [navigate, store],
   );
 
   return (
