@@ -64,7 +64,22 @@ const persistablePreferences = (
   ...updates,
 });
 
-const createRecordId = () => `ctb-r6x2-${globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random()}`}`;
+let fallbackRecordSequence = 0;
+
+const createRecordId = (records: CalibrationRecord[]) => {
+  const uuid = globalThis.crypto?.randomUUID?.();
+  if (uuid) {
+    return `ctb-r6x2-${uuid}`;
+  }
+
+  let id = '';
+  do {
+    fallbackRecordSequence += 1;
+    id = `ctb-r6x2-local-${fallbackRecordSequence}`;
+  } while (records.some((record) => record.id === id));
+
+  return id;
+};
 
 export function useCalibraTrackStore(): CalibraTrackStore {
   const [repositorySnapshot, setRepositorySnapshot] = useState(() => loadCalibraTrackState());
@@ -158,28 +173,30 @@ export function useCalibraTrackStore(): CalibraTrackStore {
   }, [selectedRecord, updatePreferences]);
 
   const addInstrument = useCallback(() => {
-    const id = createRecordId();
-    const record: CalibrationRecord = {
-      id,
-      assetTag: 'R6X2-NEW',
-      instrumentName: 'New instrument',
-      location: 'Bench R6X2',
-      technician: 'Unassigned',
-      status: 'due',
-      dueDate: new Date().toISOString().slice(0, 10),
-      lastReading: 'Pending',
-      readings: 0,
-    };
+    setState((current) => {
+      const id = createRecordId(current.records);
+      const record: CalibrationRecord = {
+        id,
+        assetTag: 'R6X2-NEW',
+        instrumentName: 'New instrument',
+        location: 'Bench R6X2',
+        technician: 'Unassigned',
+        status: 'due',
+        dueDate: new Date().toISOString().slice(0, 10),
+        lastReading: 'Pending',
+        readings: 0,
+      };
 
-    setState((current) => ({
-      ...current,
-      records: [record, ...current.records],
-      preferences: persistablePreferences(current.preferences, {
-        selectedRecordId: id,
-        activePanel: 'editor',
-        activeRoute: 'inventory',
-      }),
-    }));
+      return {
+        ...current,
+        records: [record, ...current.records],
+        preferences: persistablePreferences(current.preferences, {
+          selectedRecordId: id,
+          activePanel: 'editor',
+          activeRoute: 'inventory',
+        }),
+      };
+    });
   }, []);
 
   const retryLoad = useCallback(() => {
