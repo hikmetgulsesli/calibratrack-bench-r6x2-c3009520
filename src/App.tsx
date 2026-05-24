@@ -29,26 +29,35 @@ const recordIdByEditAction: Partial<Record<InstrumentOperationsCalibratrackBench
 
 export default function App() {
   const store = useCalibraTrackStore();
+  const {
+    activePanel,
+    activeRoute,
+    activeScreen,
+    addInstrument,
+    addReading,
+    clearFilters,
+    counts,
+    lastError,
+    retryLoad,
+    selectedRecord,
+    selectRecord,
+    setActivePanel,
+    setActiveRoute,
+    storageStatus,
+    updateSelectedStatus,
+  } = store;
 
   const bridgeSnapshot = useMemo(
     () => ({
-      activeScreen: store.activeScreen,
-      activeRoute: store.activeRoute,
-      selectedRecord: store.selectedRecord,
-      counts: store.counts,
-      storageStatus: store.storageStatus,
-      lastError: store.lastError,
-      activePanel: store.activePanel,
+      activeScreen,
+      activeRoute,
+      selectedRecord,
+      counts,
+      storageStatus,
+      lastError,
+      activePanel,
     }),
-    [
-      store.activePanel,
-      store.activeRoute,
-      store.activeScreen,
-      store.counts,
-      store.lastError,
-      store.selectedRecord,
-      store.storageStatus,
-    ],
+    [activePanel, activeRoute, activeScreen, counts, lastError, selectedRecord, storageStatus],
   );
 
   useEffect(() => {
@@ -58,34 +67,34 @@ export default function App() {
   const navigate = useCallback((actionId: string) => {
     const route = routeByAction[actionId];
     if (route) {
-      store.setActiveRoute(route);
+      setActiveRoute(route);
     }
-  }, [store]);
+  }, [setActiveRoute]);
 
   const selectRecordForEditAction = useCallback((actionId: InstrumentOperationsCalibratrackBenchR6x2ActionId) => {
     const recordId = recordIdByEditAction[actionId];
     if (recordId) {
-      store.selectRecord(recordId);
+      selectRecord(recordId);
     }
-  }, [store]);
+  }, [selectRecord]);
 
   const operationsActions = useMemo<Partial<Record<InstrumentOperationsCalibratrackBenchR6x2ActionId, () => void>>>(
     () => ({
-      'new-calibration-1': () => store.setActiveRoute('calibration-log'),
-      'button-2-2': () => store.setActiveRoute('reports'),
-      'button-3-3': () => store.setActiveRoute('standards'),
-      'certify-4': () => store.updateSelectedStatus('certified'),
-      'add-reading-5': store.addReading,
-      'add-instrument-6': store.addInstrument,
-      'status-7': () => store.updateSelectedStatus('in-progress'),
-      'technician-8': () => store.setActiveRoute('inventory'),
-      'date-range-9': () => store.setActiveRoute('calibration-log'),
+      'new-calibration-1': () => setActiveRoute('calibration-log'),
+      'button-2-2': () => setActiveRoute('reports'),
+      'button-3-3': () => setActiveRoute('standards'),
+      'certify-4': () => updateSelectedStatus('certified'),
+      'add-reading-5': addReading,
+      'add-instrument-6': addInstrument,
+      'status-7': () => updateSelectedStatus('in-progress'),
+      'technician-8': () => setActiveRoute('inventory'),
+      'date-range-9': () => setActiveRoute('calibration-log'),
       'edit-10': () => selectRecordForEditAction('edit-10'),
       'edit-11': () => selectRecordForEditAction('edit-11'),
       'edit-12': () => selectRecordForEditAction('edit-12'),
       'edit-13': () => selectRecordForEditAction('edit-13'),
-      'button-14-14': () => store.setActiveRoute('support'),
-      'button-15-15': () => store.setActiveRoute('archive'),
+      'button-14-14': () => setActiveRoute('support'),
+      'button-15-15': () => setActiveRoute('archive'),
       'dashboard-1': () => navigate('dashboard-1'),
       'inventory-2': () => navigate('inventory-2'),
       'calibration-log-3': () => navigate('calibration-log-3'),
@@ -94,31 +103,31 @@ export default function App() {
       'support-6': () => navigate('support-6'),
       'archive-7': () => navigate('archive-7'),
     }),
-    [navigate, selectRecordForEditAction, store],
+    [addInstrument, addReading, navigate, selectRecordForEditAction, setActiveRoute, updateSelectedStatus],
   );
 
   const editorActions = useMemo<Partial<Record<InstrumentEditorCalibratrackBenchR6x2ActionId, () => void>>>(
     () => ({
-      'button-1-1': () => store.setActivePanel('operations'),
-      'cancel-2': () => store.setActivePanel('operations'),
-      'save-instrument-3': () => store.setActivePanel('operations'),
-      'button-4-4': store.addReading,
-      'button-5-5': () => store.updateSelectedStatus('due'),
-      'button-6-6': () => store.updateSelectedStatus('archived'),
+      'button-1-1': () => setActivePanel('operations'),
+      'cancel-2': () => setActivePanel('operations'),
+      'save-instrument-3': () => setActivePanel('operations'),
+      'button-4-4': addReading,
+      'button-5-5': () => updateSelectedStatus('due'),
+      'button-6-6': () => updateSelectedStatus('archived'),
     }),
-    [store],
+    [addReading, setActivePanel, updateSelectedStatus],
   );
 
   const recoveryActions = useMemo<Partial<Record<EmptyAndErrorRecoveryCalibratrackBenchR6x2ActionId, () => void>>>(
     () => ({
-      'new-calibration-1': () => store.setActiveRoute('calibration-log'),
-      'add-reading-2': store.addReading,
-      'certify-3': () => store.updateSelectedStatus('certified'),
-      'button-4-4': () => store.setActiveRoute('support'),
-      'button-5-5': () => store.setActiveRoute('standards'),
-      'retry-load-6': store.retryLoad,
-      'add-instrument-7': store.addInstrument,
-      'clear-all-filters-8': store.clearFilters,
+      'new-calibration-1': () => setActiveRoute('calibration-log'),
+      'add-reading-2': addReading,
+      'certify-3': () => updateSelectedStatus('certified'),
+      'button-4-4': () => setActiveRoute('support'),
+      'button-5-5': () => setActiveRoute('standards'),
+      'retry-load-6': retryLoad,
+      'add-instrument-7': addInstrument,
+      'clear-all-filters-8': clearFilters,
       'dashboard-1': () => navigate('dashboard-1'),
       'inventory-2': () => navigate('inventory-2'),
       'calibration-log-3': () => navigate('calibration-log-3'),
@@ -127,24 +136,24 @@ export default function App() {
       'support-6': () => navigate('support-6'),
       'archive-7': () => navigate('archive-7'),
     }),
-    [navigate, store],
+    [addInstrument, addReading, clearFilters, navigate, retryLoad, setActiveRoute, updateSelectedStatus],
   );
 
   return (
     <div data-setfarm-root="calibratrack-bench-r6x2" className="min-h-screen bg-[#f4f2ec] text-[#171914]">
       <section className="calibratrack-shell" aria-label="CalibraTrack Bench R6X2 application shell">
         <div className="calibratrack-statusbar" aria-live="polite">
-          <span>Route: {store.activeRoute}</span>
-          <span>Panel: {store.activePanel}</span>
-          <span>Records: {store.counts.total}</span>
-          <span>Storage: {store.storageStatus}</span>
-          {store.selectedRecord ? <span>Selected: {store.selectedRecord.assetTag}</span> : <span>No selection</span>}
-          {store.lastError ? <strong>{store.lastError}</strong> : null}
+          <span>Route: {activeRoute}</span>
+          <span>Panel: {activePanel}</span>
+          <span>Records: {counts.total}</span>
+          <span>Storage: {storageStatus}</span>
+          {selectedRecord ? <span>Selected: {selectedRecord.assetTag}</span> : <span>No selection</span>}
+          {lastError ? <strong>{lastError}</strong> : null}
         </div>
 
-        {store.activePanel === 'editor' ? (
+        {activePanel === 'editor' ? (
           <InstrumentEditorCalibratrackBenchR6x2 actions={editorActions} />
-        ) : store.activePanel === 'recovery' ? (
+        ) : activePanel === 'recovery' ? (
           <EmptyAndErrorRecoveryCalibratrackBenchR6x2 actions={recoveryActions} />
         ) : (
           <InstrumentOperationsCalibratrackBenchR6x2 actions={operationsActions} />
