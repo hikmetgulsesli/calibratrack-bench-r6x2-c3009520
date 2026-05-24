@@ -1,0 +1,307 @@
+[
+  {
+    "screenId": "309a110c43854d6a8d8c137a418866eb",
+    "title": "Instrument Editor - CalibraTrack Bench R6X2",
+    "componentName": "InstrumentEditorCalibratrackBenchR6x2",
+    "file": "src/screens/InstrumentEditorCalibratrackBenchR6x2.tsx",
+    "buttons": 6,
+    "inputs": 10,
+    "links": 0,
+    "actions": [
+      {
+        "id": "button-1-1",
+        "kind": "button",
+        "label": "Button 1",
+        "index": 0
+      },
+      {
+        "id": "cancel-2",
+        "kind": "button",
+        "label": "Cancel",
+        "index": 1
+      },
+      {
+        "id": "save-instrument-3",
+        "kind": "button",
+        "label": "Save Instrument",
+        "index": 2
+      },
+      {
+        "id": "button-4-4",
+        "kind": "button",
+        "label": "Button 4",
+        "index": 3
+      },
+      {
+        "id": "button-5-5",
+        "kind": "button",
+        "label": "Button 5",
+        "index": 4
+      },
+      {
+        "id": "button-6-6",
+        "kind": "button",
+        "label": "Button 6",
+        "index": 5
+      }
+    ]
+  },
+  {
+    "screenId": "15d44604fb0d4973bfa69715243d2562",
+    "title": "Empty and Error Recovery - CalibraTrack Bench R6X2",
+    "componentName": "EmptyAndErrorRecoveryCalibratrackBenchR6x2",
+    "file": "src/screens/EmptyAndErrorRecoveryCalibratrackBenchR6x2.tsx",
+    "buttons": 8,
+    "inputs": 1,
+    "links": 7,
+    "actions": [
+      {
+        "id": "new-calibration-1",
+        "kind": "button",
+        "label": "New Calibration",
+        "index": 0
+      },
+      {
+        "id": "add-reading-2",
+        "kind": "button",
+        "label": "Add Reading",
+        "index": 1
+      },
+      {
+        "id": "certify-3",
+        "kind": "button",
+        "label": "Certify",
+        "index": 2
+      },
+      {
+        "id": "button-4-4",
+        "kind": "button",
+        "label": "Button 4",
+        "index": 3
+      },
+      {
+        "id": "button-5-5",
+        "kind": "button",
+        "label": "Button 5",
+        "index": 4
+      },
+      {
+        "id": "retry-load-6",
+        "kind": "button",
+        "label": "Retry Load",
+        "index": 5
+      },
+      {
+        "id": "add-instrument-7",
+        "kind": "button",
+        "label": "Add Instrument",
+        "index": 6
+      },
+      {
+        "id": "clear-all-filters-8",
+        "kind": "button",
+        "label": "Clear All Filters",
+        "index": 7
+      },
+      {
+        "id": "dashboard-1",
+        "kind": "link",
+        "label": "Dashboard",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "inventory-2",
+        "kind": "link",
+        "label": "Inventory",
+        "href": "#",
+        "index": 1
+      },
+      {
+        "id": "calibration-log-3",
+        "kind": "link",
+        "label": "Calibration Log",
+        "href": "#",
+        "index": 2
+      },
+      {
+        "id": "reports-4",
+        "kind": "link",
+        "label": "Reports",
+        "href": "#",
+        "index": 3
+      },
+      {
+        "id": "standards-5",
+        "kind": "link",
+        "label": "Standards",
+        "href": "#",
+        "index": 4
+      },
+      {
+        "id": "support-6",
+        "kind": "link",
+        "label": "Support",
+        "href": "#",
+        "index": 5
+      },
+      {
+        "id": "archive-7",
+        "kind": "link",
+        "label": "Archive",
+        "href": "#",
+        "index": 6
+      }
+    ]
+  },
+  {
+    "screenId": "70bcc9142eb84cee923553834919af30",
+    "title": "Instrument Operations - CalibraTrack Bench R6X2",
+    "componentName": "InstrumentOperationsCalibratrackBenchR6x2",
+    "file": "src/screens/InstrumentOperationsCalibratrackBenchR6x2.tsx",
+    "buttons": 15,
+    "inputs": 2,
+    "links": 7,
+    "actions": [
+      {
+        "id": "new-calibration-1",
+        "kind": "button",
+        "label": "New Calibration",
+        "index": 0
+      },
+      {
+        "id": "button-2-2",
+        "kind": "button",
+        "label": "Button 2",
+        "index": 1
+      },
+      {
+        "id": "button-3-3",
+        "kind": "button",
+        "label": "Button 3",
+        "index": 2
+      },
+      {
+        "id": "certify-4",
+        "kind": "button",
+        "label": "Certify",
+        "index": 3
+      },
+      {
+        "id": "add-reading-5",
+        "kind": "button",
+        "label": "Add Reading",
+        "index": 4
+      },
+      {
+        "id": "add-instrument-6",
+        "kind": "button",
+        "label": "Add Instrument",
+        "index": 5
+      },
+      {
+        "id": "status-7",
+        "kind": "button",
+        "label": "Status",
+        "index": 6
+      },
+      {
+        "id": "technician-8",
+        "kind": "button",
+        "label": "Technician",
+        "index": 7
+      },
+      {
+        "id": "date-range-9",
+        "kind": "button",
+        "label": "Date Range",
+        "index": 8
+      },
+      {
+        "id": "edit-10",
+        "kind": "button",
+        "label": "Edit",
+        "index": 9
+      },
+      {
+        "id": "edit-11",
+        "kind": "button",
+        "label": "Edit",
+        "index": 10
+      },
+      {
+        "id": "edit-12",
+        "kind": "button",
+        "label": "Edit",
+        "index": 11
+      },
+      {
+        "id": "edit-13",
+        "kind": "button",
+        "label": "Edit",
+        "index": 12
+      },
+      {
+        "id": "button-14-14",
+        "kind": "button",
+        "label": "Button 14",
+        "index": 13
+      },
+      {
+        "id": "button-15-15",
+        "kind": "button",
+        "label": "Button 15",
+        "index": 14
+      },
+      {
+        "id": "dashboard-1",
+        "kind": "link",
+        "label": "Dashboard",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "inventory-2",
+        "kind": "link",
+        "label": "Inventory",
+        "href": "#",
+        "index": 1
+      },
+      {
+        "id": "calibration-log-3",
+        "kind": "link",
+        "label": "Calibration Log",
+        "href": "#",
+        "index": 2
+      },
+      {
+        "id": "reports-4",
+        "kind": "link",
+        "label": "Reports",
+        "href": "#",
+        "index": 3
+      },
+      {
+        "id": "standards-5",
+        "kind": "link",
+        "label": "Standards",
+        "href": "#",
+        "index": 4
+      },
+      {
+        "id": "support-6",
+        "kind": "link",
+        "label": "Support",
+        "href": "#",
+        "index": 5
+      },
+      {
+        "id": "archive-7",
+        "kind": "link",
+        "label": "Archive",
+        "href": "#",
+        "index": 6
+      }
+    ]
+  }
+]
