@@ -8,24 +8,13 @@ import {
   type InstrumentOperationsCalibratrackBenchR6x2ActionId,
 } from './screens';
 import { publishAppBridge } from './test/bridge';
-import { type AppRoute, useCalibraTrackStore } from './features/calibratrack-bench-r6x2/calibratrack-bench-r6x2.store';
-
-const routeByAction: Record<string, AppRoute> = {
-  'dashboard-1': 'dashboard',
-  'inventory-2': 'inventory',
-  'calibration-log-3': 'calibration-log',
-  'reports-4': 'reports',
-  'standards-5': 'standards',
-  'support-6': 'support',
-  'archive-7': 'archive',
-};
-
-const recordIdByEditAction: Partial<Record<InstrumentOperationsCalibratrackBenchR6x2ActionId, string>> = {
-  'edit-10': 'ctb-r6x2-001',
-  'edit-11': 'ctb-r6x2-002',
-  'edit-12': 'ctb-r6x2-003',
-  'edit-13': 'ctb-r6x2-004',
-};
+import { useCalibraTrackStore } from './features/calibratrack-bench-r6x2/calibratrack-bench-r6x2.store';
+import { actCancelEdit } from './features/surf-instrument-editor/act_cancel_edit';
+import { actSaveRecord } from './features/surf-instrument-editor/act_save_record';
+import { actCreateRecord } from './features/surf-instrument-operations/act_create_record';
+import { actRetryLoad } from './features/surf-instrument-operations/act_retry_load';
+import { actSearchRecords } from './features/surf-instrument-operations/act_search_records';
+import { actSelectRecord } from './features/surf-instrument-operations/act_select_record';
 
 export default function App() {
   const store = useCalibraTrackStore();
@@ -55,20 +44,6 @@ export default function App() {
     publishAppBridge(bridgeSnapshot);
   }, [bridgeSnapshot]);
 
-  const navigate = (actionId: string) => {
-    const route = routeByAction[actionId];
-    if (route) {
-      store.setActiveRoute(route);
-    }
-  };
-
-  const selectRecordForEditAction = (actionId: InstrumentOperationsCalibratrackBenchR6x2ActionId) => {
-    const recordId = recordIdByEditAction[actionId];
-    if (recordId) {
-      store.selectRecord(recordId);
-    }
-  };
-
   const operationsActions = useMemo<Partial<Record<InstrumentOperationsCalibratrackBenchR6x2ActionId, () => void>>>(
     () => ({
       'new-calibration-1': () => store.setActiveRoute('calibration-log'),
@@ -76,23 +51,23 @@ export default function App() {
       'button-3-3': () => store.setActiveRoute('standards'),
       'certify-4': () => store.updateSelectedStatus('certified'),
       'add-reading-5': store.addReading,
-      'add-instrument-6': store.addInstrument,
+      'add-instrument-6': () => actCreateRecord(store),
       'status-7': () => store.updateSelectedStatus('in-progress'),
       'technician-8': () => store.setActiveRoute('inventory'),
       'date-range-9': () => store.setActiveRoute('calibration-log'),
-      'edit-10': () => selectRecordForEditAction('edit-10'),
-      'edit-11': () => selectRecordForEditAction('edit-11'),
-      'edit-12': () => selectRecordForEditAction('edit-12'),
-      'edit-13': () => selectRecordForEditAction('edit-13'),
+      'edit-10': () => actSelectRecord(store, 'edit-10'),
+      'edit-11': () => actSelectRecord(store, 'edit-11'),
+      'edit-12': () => actSelectRecord(store, 'edit-12'),
+      'edit-13': () => actSelectRecord(store, 'edit-13'),
       'button-14-14': () => store.setActiveRoute('support'),
       'button-15-15': () => store.setActiveRoute('archive'),
-      'dashboard-1': () => navigate('dashboard-1'),
-      'inventory-2': () => navigate('inventory-2'),
-      'calibration-log-3': () => navigate('calibration-log-3'),
-      'reports-4': () => navigate('reports-4'),
-      'standards-5': () => navigate('standards-5'),
-      'support-6': () => navigate('support-6'),
-      'archive-7': () => navigate('archive-7'),
+      'dashboard-1': () => actSearchRecords(store, 'dashboard-1'),
+      'inventory-2': () => actSearchRecords(store, 'inventory-2'),
+      'calibration-log-3': () => actSearchRecords(store, 'calibration-log-3'),
+      'reports-4': () => actSearchRecords(store, 'reports-4'),
+      'standards-5': () => actSearchRecords(store, 'standards-5'),
+      'support-6': () => actSearchRecords(store, 'support-6'),
+      'archive-7': () => actSearchRecords(store, 'archive-7'),
     }),
     [store],
   );
@@ -100,8 +75,8 @@ export default function App() {
   const editorActions = useMemo<Partial<Record<InstrumentEditorCalibratrackBenchR6x2ActionId, () => void>>>(
     () => ({
       'button-1-1': () => store.setActivePanel('operations'),
-      'cancel-2': () => store.setActivePanel('operations'),
-      'save-instrument-3': () => store.setActivePanel('operations'),
+      'cancel-2': () => actCancelEdit(store),
+      'save-instrument-3': () => actSaveRecord(store),
       'button-4-4': store.addReading,
       'button-5-5': () => store.updateSelectedStatus('due'),
       'button-6-6': () => store.updateSelectedStatus('archived'),
@@ -116,16 +91,16 @@ export default function App() {
       'certify-3': () => store.updateSelectedStatus('certified'),
       'button-4-4': () => store.setActiveRoute('support'),
       'button-5-5': () => store.setActiveRoute('standards'),
-      'retry-load-6': store.retryLoad,
-      'add-instrument-7': store.addInstrument,
+      'retry-load-6': () => actRetryLoad(store),
+      'add-instrument-7': () => actCreateRecord(store),
       'clear-all-filters-8': store.clearFilters,
-      'dashboard-1': () => navigate('dashboard-1'),
-      'inventory-2': () => navigate('inventory-2'),
-      'calibration-log-3': () => navigate('calibration-log-3'),
-      'reports-4': () => navigate('reports-4'),
-      'standards-5': () => navigate('standards-5'),
-      'support-6': () => navigate('support-6'),
-      'archive-7': () => navigate('archive-7'),
+      'dashboard-1': () => actSearchRecords(store, 'dashboard-1'),
+      'inventory-2': () => actSearchRecords(store, 'inventory-2'),
+      'calibration-log-3': () => actSearchRecords(store, 'calibration-log-3'),
+      'reports-4': () => actSearchRecords(store, 'reports-4'),
+      'standards-5': () => actSearchRecords(store, 'standards-5'),
+      'support-6': () => actSearchRecords(store, 'support-6'),
+      'archive-7': () => actSearchRecords(store, 'archive-7'),
     }),
     [store],
   );
