@@ -7,7 +7,7 @@
 // 3. Wire interactive controls through the typed actions prop
 // 4. Replace placeholder data with props/state
 
-import { Circle, Plus, RefreshCw, Search, Settings } from "lucide-react";
+import { Circle, Plus, RefreshCw, Search, Server, Settings } from "lucide-react";
 
 
 export type EmptyAndErrorRecoveryCalibratrackBenchR6x2ActionId = "new-calibration-1" | "add-reading-2" | "certify-3" | "button-4-4" | "button-5-5" | "retry-load-6" | "add-instrument-7" | "clear-all-filters-8" | "dashboard-1" | "inventory-2" | "calibration-log-3" | "reports-4" | "standards-5" | "support-6" | "archive-7";
@@ -26,10 +26,10 @@ export function EmptyAndErrorRecoveryCalibratrackBenchR6x2({ actions }: EmptyAnd
       <div className="w-10 h-10 rounded bg-primary-container flex items-center justify-center flex-shrink-0">
       <Circle className="text-on-primary-container" aria-hidden={true} focusable="false" />
       </div>
-      <div>
+      <button aria-label="Bench R6X2 Station Active" className="text-left rounded focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" type="button" data-action-id="inventory-2" onClick={actions?.["inventory-2"]}>
       <h1 className="font-headline-sm text-headline-sm font-extrabold text-on-surface truncate">Bench R6X2</h1>
       <p className="font-body-sm text-body-sm text-on-surface-variant truncate">Station Active</p>
-      </div>
+      </button>
       </div>
       {/* CTA */}
       <div className="px-md mb-lg">
@@ -124,7 +124,10 @@ export function EmptyAndErrorRecoveryCalibratrackBenchR6x2({ actions }: EmptyAnd
                       </p>
       {/* Technical Details Block */}
       <div className="w-full bg-surface flex items-start gap-sm border border-outline-variant rounded p-sm mb-xl text-left">
-      <Circle className="text-[18px] text-on-surface-variant mt-0.5" aria-hidden={true} focusable="false" />
+      <button aria-label="dns" className="text-on-surface-variant mt-0.5 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" type="button" data-action-id="retry-load-6" onClick={actions?.["retry-load-6"]}>
+      <Server className="text-[18px]" aria-hidden={true} focusable="false" />
+      <span className="sr-only">dns</span>
+      </button>
       <div>
       <span className="block font-label-sm text-label-sm text-on-surface-variant mb-xs">Diagnostic Info</span>
       <code className="block font-data-mono text-data-mono text-on-surface break-all">Error Code: ERR_DATA_LOAD_TIMEOUT</code>
