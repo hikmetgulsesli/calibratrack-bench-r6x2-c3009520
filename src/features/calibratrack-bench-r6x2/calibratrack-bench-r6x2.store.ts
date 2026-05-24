@@ -64,6 +64,8 @@ const persistablePreferences = (
   ...updates,
 });
 
+const createRecordId = () => `ctb-r6x2-${globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random()}`}`;
+
 export function useCalibraTrackStore(): CalibraTrackStore {
   const [repositorySnapshot, setRepositorySnapshot] = useState(() => loadCalibraTrackState());
   const [state, setState] = useState<CalibraTrackPersistedState>(repositorySnapshot.state);
@@ -73,7 +75,7 @@ export function useCalibraTrackStore(): CalibraTrackStore {
   useEffect(() => {
     const result = saveCalibraTrackState(state);
     setStorageStatus((current) => (current === 'recovered' ? current : result.storageStatus));
-    setLastError((current) => current ?? result.lastError);
+    setLastError(result.lastError);
   }, [state]);
 
   const selectedRecord = useMemo(
@@ -156,7 +158,7 @@ export function useCalibraTrackStore(): CalibraTrackStore {
   }, [selectedRecord, updatePreferences]);
 
   const addInstrument = useCallback(() => {
-    const id = `ctb-r6x2-${Date.now()}`;
+    const id = createRecordId();
     const record: CalibrationRecord = {
       id,
       assetTag: 'R6X2-NEW',

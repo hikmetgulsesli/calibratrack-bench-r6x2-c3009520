@@ -20,6 +20,13 @@ const routeByAction: Record<string, AppRoute> = {
   'archive-7': 'archive',
 };
 
+const recordIdByEditAction: Partial<Record<InstrumentOperationsCalibratrackBenchR6x2ActionId, string>> = {
+  'edit-10': 'ctb-r6x2-001',
+  'edit-11': 'ctb-r6x2-002',
+  'edit-12': 'ctb-r6x2-003',
+  'edit-13': 'ctb-r6x2-004',
+};
+
 export default function App() {
   const store = useCalibraTrackStore();
 
@@ -55,6 +62,13 @@ export default function App() {
     }
   };
 
+  const selectRecordForEditAction = (actionId: InstrumentOperationsCalibratrackBenchR6x2ActionId) => {
+    const recordId = recordIdByEditAction[actionId];
+    if (recordId) {
+      store.selectRecord(recordId);
+    }
+  };
+
   const operationsActions = useMemo<Partial<Record<InstrumentOperationsCalibratrackBenchR6x2ActionId, () => void>>>(
     () => ({
       'new-calibration-1': () => store.setActiveRoute('calibration-log'),
@@ -66,10 +80,10 @@ export default function App() {
       'status-7': () => store.updateSelectedStatus('in-progress'),
       'technician-8': () => store.setActiveRoute('inventory'),
       'date-range-9': () => store.setActiveRoute('calibration-log'),
-      'edit-10': () => store.records[0] && store.selectRecord(store.records[0].id),
-      'edit-11': () => store.records[1] && store.selectRecord(store.records[1].id),
-      'edit-12': () => store.records[2] && store.selectRecord(store.records[2].id),
-      'edit-13': () => store.records[3] && store.selectRecord(store.records[3].id),
+      'edit-10': () => selectRecordForEditAction('edit-10'),
+      'edit-11': () => selectRecordForEditAction('edit-11'),
+      'edit-12': () => selectRecordForEditAction('edit-12'),
+      'edit-13': () => selectRecordForEditAction('edit-13'),
       'button-14-14': () => store.setActiveRoute('support'),
       'button-15-15': () => store.setActiveRoute('archive'),
       'dashboard-1': () => navigate('dashboard-1'),
