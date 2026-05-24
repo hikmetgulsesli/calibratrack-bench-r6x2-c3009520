@@ -1,0 +1,29 @@
+[
+  {
+    "screenId": "309a110c43854d6a8d8c137a418866eb",
+    "name": "Instrument Editor - CalibraTrack Bench R6X2",
+    "type": "form",
+    "description": "Instrument Editor - CalibraTrack Bench R6X2 screen",
+    "surfaceIds": [
+      "SURF_INSTRUMENT_EDITOR"
+    ]
+  },
+  {
+    "screenId": "15d44604fb0d4973bfa69715243d2562",
+    "name": "Empty and Error Recovery - CalibraTrack Bench R6X2",
+    "type": "error",
+    "description": "Empty and Error Recovery - CalibraTrack Bench R6X2 screen",
+    "surfaceIds": [
+      "SURF_EMPTY_AND_ERROR_RECOVERY"
+    ]
+  },
+  {
+    "screenId": "70bcc9142eb84cee923553834919af30",
+    "name": "Instrument Operations - CalibraTrack Bench R6X2",
+    "type": "app-screen",
+    "description": "Instrument Operations - CalibraTrack Bench R6X2 screen",
+    "surfaceIds": [
+      "SURF_INSTRUMENT_OPERATIONS"
+    ]
+  }
+]

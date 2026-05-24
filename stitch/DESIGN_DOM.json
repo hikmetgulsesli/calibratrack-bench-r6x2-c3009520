@@ -1,0 +1,1845 @@
+{
+  "generatedAt": "2026-05-24T11:19:30.087Z",
+  "screenCount": 3,
+  "screens": {
+    "15d44604fb0d4973bfa69715243d2562": {
+      "screenId": "15d44604fb0d4973bfa69715243d2562",
+      "materialSymbolsRequired": true,
+      "sections": [
+        {
+          "tag": "nav",
+          "layout": "flex-col",
+          "classes": [
+            "hidden",
+            "md:flex",
+            "flex-col",
+            "flex-shrink-0",
+            "docked",
+            "left-0",
+            "h-full",
+            "w-64",
+            "bg-surface-container-low",
+            "border-r"
+          ],
+          "childCount": 6
+        },
+        {
+          "tag": "header",
+          "layout": "flex-row",
+          "classes": [
+            "flex",
+            "justify-between",
+            "items-center",
+            "w-full",
+            "px-margin-desktop",
+            "h-16",
+            "bg-surface-container-lowest",
+            "border-b",
+            "border-outline-variant",
+            "flex-shrink-0"
+          ],
+          "childCount": 6
+        },
+        {
+          "tag": "main",
+          "layout": "flex-row",
+          "classes": [
+            "flex-1",
+            "overflow-y-auto",
+            "p-margin-desktop",
+            "flex",
+            "items-center",
+            "justify-center",
+            "bg-background",
+            "relative"
+          ],
+          "childCount": 7
+        }
+      ],
+      "buttons": [
+        {
+          "kind": "button",
+          "label": "New Calibration",
+          "classes": [
+            "w-full",
+            "bg-primary",
+            "text-on-primary",
+            "font-label-md",
+            "text-label-md",
+            "py-sm",
+            "px-md",
+            "rounded",
+            "flex",
+            "items-center",
+            "justify-center",
+            "gap-sm",
+            "transition-colors",
+            "hover:bg-primary/90",
+            "active:scale-95",
+            "duration-100",
+            "shadow-[0_1px_2px_rgba(0,0,0,0.1)]"
+          ],
+          "icon": "add",
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "Add Reading",
+          "classes": [
+            "hidden",
+            "md:flex",
+            "items-center",
+            "justify-center",
+            "px-md",
+            "py-sm",
+            "border",
+            "border-secondary",
+            "text-secondary",
+            "rounded",
+            "font-label-md",
+            "text-label-md",
+            "hover:bg-surface-container",
+            "transition-colors",
+            "active:scale-95",
+            "duration-100"
+          ],
+          "icon": null,
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "Certify",
+          "classes": [
+            "hidden",
+            "md:flex",
+            "items-center",
+            "justify-center",
+            "px-md",
+            "py-sm",
+            "bg-primary",
+            "text-on-primary",
+            "rounded",
+            "font-label-md",
+            "text-label-md",
+            "hover:bg-primary/90",
+            "transition-colors",
+            "active:scale-95",
+            "duration-100"
+          ],
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Notifications",
+          "classes": [
+            "p-sm",
+            "text-on-surface-variant",
+            "hover:bg-surface-container",
+            "rounded-full",
+            "transition-colors",
+            "flex",
+            "items-center",
+            "justify-center"
+          ],
+          "icon": "notifications",
+          "action": "navigate",
+          "expectedBehavior": "navigate:/notifications",
+          "expectedRoute": "/notifications",
+          "routeInferred": true
+        },
+        {
+          "kind": "button",
+          "label": "Settings",
+          "classes": [
+            "p-sm",
+            "text-on-surface-variant",
+            "hover:bg-surface-container",
+            "rounded-full",
+            "transition-colors",
+            "flex",
+            "items-center",
+            "justify-center"
+          ],
+          "icon": "settings",
+          "action": "navigate",
+          "expectedBehavior": "navigate:/settings",
+          "expectedRoute": "/settings",
+          "routeInferred": true
+        },
+        {
+          "kind": "button",
+          "label": "Retry Load",
+          "classes": [
+            "flex-1",
+            "bg-primary",
+            "text-on-primary",
+            "font-label-md",
+            "text-label-md",
+            "py-sm",
+            "px-md",
+            "rounded",
+            "flex",
+            "items-center",
+            "justify-center",
+            "gap-sm",
+            "transition-colors",
+            "hover:bg-primary/90",
+            "active:scale-95",
+            "duration-100",
+            "focus:outline-none",
+            "focus:ring-2",
+            "focus:ring-offset-2",
+            "focus:ring-primary"
+          ],
+          "icon": "refresh",
+          "action": "retry",
+          "expectedBehavior": "retry the failed action and show loading/error feedback"
+        },
+        {
+          "kind": "button",
+          "label": "Add Instrument",
+          "classes": [
+            "flex-1",
+            "border",
+            "border-secondary",
+            "text-secondary",
+            "font-label-md",
+            "text-label-md",
+            "py-sm",
+            "px-md",
+            "rounded",
+            "flex",
+            "items-center",
+            "justify-center",
+            "gap-sm",
+            "transition-colors",
+            "hover:bg-surface-container",
+            "active:scale-95",
+            "duration-100",
+            "focus:outline-none",
+            "focus:ring-2",
+            "focus:ring-offset-2",
+            "focus:ring-secondary"
+          ],
+          "icon": "add_circle",
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "Clear All Filters",
+          "classes": [
+            "mt-sm",
+            "text-secondary",
+            "hover:text-primary",
+            "font-label-md",
+            "text-label-md",
+            "transition-colors",
+            "focus:outline-none",
+            "underline",
+            "decoration-transparent",
+            "hover:decoration-primary",
+            "underline-offset-4"
+          ],
+          "icon": null,
+          "action": "search",
+          "expectedBehavior": "filter/search visible results from input/query"
+        },
+        {
+          "kind": "button",
+          "label": "dns",
+          "classes": [],
+          "icon": "dns",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Bench R6X2 Station Active",
+          "classes": [],
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        }
+      ],
+      "inputs": [
+        {
+          "kind": "input",
+          "type": "text",
+          "label": "Search instruments, standards...",
+          "placeholder": "Search instruments, standards...",
+          "name": "",
+          "classes": [
+            "w-full",
+            "bg-surface",
+            "border",
+            "border-outline-variant",
+            "rounded",
+            "pl-xl",
+            "pr-sm",
+            "py-sm",
+            "text-body-sm",
+            "font-body-sm",
+            "text-on-surface",
+            "placeholder:text-on-surface-variant",
+            "focus:outline-none",
+            "focus:ring-2",
+            "focus:ring-primary",
+            "focus:border-primary",
+            "transition-all"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        }
+      ],
+      "navLinks": [
+        {
+          "kind": "link",
+          "label": "dashboard",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "dashboard",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Inventory",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "precision_manufacturing",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Calibration Log",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "history_edu",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Reports",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "analytics",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Standards",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "rule",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Support",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "help",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "archive",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "archive",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        }
+      ],
+      "cards": [],
+      "icons": [
+        "dns",
+        "add",
+        "dashboard",
+        "precision_manufacturing",
+        "history_edu",
+        "analytics",
+        "rule",
+        "help",
+        "archive",
+        "search",
+        "notifications",
+        "settings",
+        "cloud_off",
+        "terminal",
+        "refresh",
+        "add_circle"
+      ],
+      "images": [
+        {
+          "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuBuzbw5fmjcn3snnJYdqlDpGQYWk2omEsCREXi5TiMMYpZGYLL-AMN22pUBXvGmYheOYhE2_2tCn_h4_Na17fW6XVnSKVDy2xuMhvg7nw3r6LcwBu_tTTwQBsJ4vL4eS0XCgIYG3ZKDvAFuQn8tsu",
+          "alt": "Technician Profile"
+        }
+      ],
+      "cssVars": {},
+      "colorPalette": {
+        "tertiary-fixed": "#fadfb8",
+        "inverse-on-surface": "#eff1f3",
+        "surface-container-high": "#e6e8ea",
+        "surface-container": "#eceef0",
+        "secondary-fixed": "#d3e4fe",
+        "outline": "#75777d",
+        "surface": "#f7f9fb",
+        "outline-variant": "#c5c6cd",
+        "surface-container-highest": "#e0e3e5",
+        "secondary": "#505f76",
+        "on-tertiary-fixed-variant": "#564427",
+        "on-surface-variant": "#45474c",
+        "error-container": "#ffdad6",
+        "on-secondary-container": "#54647a",
+        "secondary-fixed-dim": "#b7c8e1",
+        "surface-container-lowest": "#ffffff",
+        "on-background": "#191c1e",
+        "inverse-primary": "#bcc7de",
+        "inverse-surface": "#2d3133",
+        "on-primary": "#ffffff",
+        "on-error-container": "#93000a",
+        "primary-fixed": "#d8e3fb",
+        "on-tertiary-container": "#a38c6a",
+        "on-secondary": "#ffffff",
+        "primary": "#091426",
+        "surface-dim": "#d8dadc",
+        "error": "#ba1a1a",
+        "surface-bright": "#f7f9fb",
+        "on-tertiary": "#ffffff",
+        "surface-variant": "#e0e3e5",
+        "surface-container-low": "#f2f4f6",
+        "on-error": "#ffffff",
+        "on-primary-fixed-variant": "#3c475a",
+        "primary-container": "#1e293b",
+        "tertiary-container": "#35260c",
+        "tertiary": "#1e1200",
+        "on-primary-fixed": "#111c2d",
+        "primary-fixed-dim": "#bcc7de",
+        "on-surface": "#191c1e",
+        "surface-tint": "#545f73",
+        "on-secondary-fixed-variant": "#38485d",
+        "tertiary-fixed-dim": "#ddc39d",
+        "on-primary-container": "#8590a6",
+        "on-secondary-fixed": "#0b1c30",
+        "on-tertiary-fixed": "#271902",
+        "background": "#f7f9fb",
+        "secondary-container": "#d0e1fb"
+      },
+      "fonts": [
+        "Inter",
+        "JetBrains Mono",
+        "Material Symbols Outlined"
+      ],
+      "layoutHints": {
+        "flexDirection": "col"
+      },
+      "behaviorContract": [
+        {
+          "kind": "link",
+          "label": "dashboard",
+          "icon": "dashboard",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Inventory",
+          "icon": "precision_manufacturing",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Calibration Log",
+          "icon": "history_edu",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Reports",
+          "icon": "analytics",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Standards",
+          "icon": "rule",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Support",
+          "icon": "help",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "archive",
+          "icon": "archive",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "button",
+          "label": "New Calibration",
+          "icon": "add",
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "Add Reading",
+          "icon": null,
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "Certify",
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Notifications",
+          "icon": "notifications",
+          "action": "navigate",
+          "route": "/notifications",
+          "expectedBehavior": "navigate:/notifications"
+        },
+        {
+          "kind": "button",
+          "label": "Settings",
+          "icon": "settings",
+          "action": "navigate",
+          "route": "/settings",
+          "expectedBehavior": "navigate:/settings"
+        },
+        {
+          "kind": "button",
+          "label": "Retry Load",
+          "icon": "refresh",
+          "action": "retry",
+          "expectedBehavior": "retry the failed action and show loading/error feedback"
+        },
+        {
+          "kind": "button",
+          "label": "Add Instrument",
+          "icon": "add_circle",
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "Clear All Filters",
+          "icon": null,
+          "action": "search",
+          "expectedBehavior": "filter/search visible results from input/query"
+        },
+        {
+          "kind": "button",
+          "label": "dns",
+          "icon": "dns",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Bench R6X2 Station Active",
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "input",
+          "label": "Search instruments, standards...",
+          "type": "text",
+          "placeholder": "Search instruments, standards...",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        }
+      ],
+      "tabBar": [
+        {
+          "kind": "button",
+          "label": "dns",
+          "icon": "dns",
+          "active": true
+        },
+        {
+          "kind": "button",
+          "label": "Bench R6X2 Station Active",
+          "icon": null,
+          "active": true
+        },
+        {
+          "kind": "button",
+          "label": "New Calibration",
+          "icon": "add",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "dashboard",
+          "icon": "dashboard",
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "Inventory",
+          "icon": "precision_manufacturing",
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "Calibration Log",
+          "icon": "history_edu",
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "Reports",
+          "icon": "analytics",
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "Standards",
+          "icon": "rule",
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "Support",
+          "icon": "help",
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "archive",
+          "icon": "archive",
+          "route": "#",
+          "active": true
+        }
+      ],
+      "title": "Empty and Error Recovery - CalibraTrack Bench R6X2"
+    },
+    "309a110c43854d6a8d8c137a418866eb": {
+      "screenId": "309a110c43854d6a8d8c137a418866eb",
+      "materialSymbolsRequired": true,
+      "sections": [
+        {
+          "tag": "header",
+          "layout": "flex-row",
+          "classes": [
+            "bg-surface-container-lowest",
+            "border-b",
+            "border-outline-variant",
+            "flex",
+            "justify-between",
+            "items-center",
+            "w-full",
+            "px-margin-desktop",
+            "h-16",
+            "fixed"
+          ],
+          "childCount": 3
+        },
+        {
+          "tag": "main",
+          "layout": "flex-row",
+          "classes": [
+            "flex-1",
+            "mt-16",
+            "pt-lg",
+            "pb-xl",
+            "px-margin-mobile",
+            "md:px-margin-desktop",
+            "max-w-5xl",
+            "mx-auto",
+            "w-full"
+          ],
+          "childCount": 33
+        }
+      ],
+      "buttons": [
+        {
+          "kind": "button",
+          "label": "Go Back",
+          "classes": [
+            "text-secondary",
+            "hover:bg-surface-container",
+            "rounded-full",
+            "p-sm",
+            "transition-colors"
+          ],
+          "icon": "arrow_back",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Cancel",
+          "classes": [
+            "font-label-md",
+            "text-label-md",
+            "px-md",
+            "py-sm",
+            "border",
+            "border-outline",
+            "text-secondary",
+            "hover:bg-surface-container",
+            "rounded",
+            "transition-colors"
+          ],
+          "icon": null,
+          "action": "dismiss",
+          "expectedBehavior": "close dialog/panel or return to previous state"
+        },
+        {
+          "kind": "button",
+          "label": "Instrument",
+          "classes": [
+            "font-label-md",
+            "text-label-md",
+            "px-md",
+            "py-sm",
+            "bg-primary",
+            "text-on-primary",
+            "hover:bg-primary-container",
+            "rounded",
+            "transition-colors",
+            "flex",
+            "items-center",
+            "gap-xs"
+          ],
+          "icon": "save",
+          "action": "form-submit",
+          "expectedBehavior": "validate inputs and submit/apply changes"
+        },
+        {
+          "kind": "button",
+          "label": "Add Spec",
+          "classes": [
+            "text-primary",
+            "hover:bg-primary-fixed/20",
+            "p-xs",
+            "rounded",
+            "transition-colors"
+          ],
+          "icon": "add",
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "Remove Spec",
+          "classes": [
+            "text-outline",
+            "hover:text-error",
+            "transition-colors",
+            "p-sm",
+            "mb-[2px]"
+          ],
+          "icon": "delete",
+          "action": "destructive",
+          "expectedBehavior": "perform destructive action with visible feedback or confirmation"
+        }
+      ],
+      "inputs": [
+        {
+          "kind": "input",
+          "type": "text",
+          "label": "inst-name",
+          "placeholder": "",
+          "name": "inst-name",
+          "classes": [
+            "w-full",
+            "border",
+            "border-outline-variant",
+            "rounded",
+            "bg-surface",
+            "px-md",
+            "py-sm",
+            "font-body-md",
+            "text-on-surface",
+            "transition-colors"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "type": "text",
+          "label": "inst-model",
+          "placeholder": "",
+          "name": "inst-model",
+          "classes": [
+            "w-full",
+            "border",
+            "border-outline-variant",
+            "rounded",
+            "bg-surface",
+            "px-md",
+            "py-sm",
+            "font-body-md",
+            "text-on-surface",
+            "transition-colors"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "type": "text",
+          "label": "inst-serial",
+          "placeholder": "",
+          "name": "inst-serial",
+          "classes": [
+            "w-full",
+            "border",
+            "border-error",
+            "rounded",
+            "bg-error-container/20",
+            "px-md",
+            "py-sm",
+            "font-data-mono",
+            "text-data-mono",
+            "text-on-surface",
+            "transition-colors"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "type": "text",
+          "label": "text",
+          "placeholder": "",
+          "name": "",
+          "classes": [
+            "w-full",
+            "border",
+            "border-outline-variant",
+            "rounded",
+            "bg-surface",
+            "px-md",
+            "py-sm",
+            "font-body-md",
+            "text-on-surface"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "type": "select",
+          "label": "inst-freq",
+          "placeholder": "",
+          "name": "inst-freq",
+          "classes": [
+            "w-full",
+            "border",
+            "border-outline-variant",
+            "rounded",
+            "bg-surface",
+            "px-md",
+            "py-sm",
+            "font-body-md",
+            "text-on-surface",
+            "transition-colors"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "type": "date",
+          "label": "inst-last-cal",
+          "placeholder": "",
+          "name": "inst-last-cal",
+          "classes": [
+            "w-full",
+            "pl-xl",
+            "pr-md",
+            "py-sm",
+            "border",
+            "border-outline-variant",
+            "rounded",
+            "bg-surface",
+            "font-data-mono",
+            "text-data-mono",
+            "text-on-surface",
+            "transition-colors"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "type": "select",
+          "label": "inst-tech",
+          "placeholder": "",
+          "name": "inst-tech",
+          "classes": [
+            "w-full",
+            "pl-xl",
+            "pr-md",
+            "py-sm",
+            "border",
+            "border-outline-variant",
+            "rounded",
+            "bg-surface",
+            "font-body-md",
+            "text-on-surface",
+            "transition-colors"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        }
+      ],
+      "navLinks": [],
+      "cards": [],
+      "icons": [
+        "arrow_back",
+        "edit_note",
+        "save",
+        "precision_manufacturing",
+        "error",
+        "add",
+        "delete",
+        "calendar_today",
+        "person"
+      ],
+      "images": [
+        {
+          "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuAI0iYWAc3LPY9GkbRBL9buZ8Jy4zcbs1gMdRw4E5hdNbwQKGxQcD0UF5FdglCWFPxx4-7HLtvGZv-sbrX9OiVXMtfGRYr-9at_L2Q5rofkgUlpUyNYlf56Ko57e0-nsu8ih8fbyzVAhu2jYi0kR9",
+          "alt": ""
+        }
+      ],
+      "cssVars": {},
+      "colorPalette": {
+        "tertiary-fixed": "#fadfb8",
+        "inverse-on-surface": "#eff1f3",
+        "surface-container-high": "#e6e8ea",
+        "surface-container": "#eceef0",
+        "secondary-fixed": "#d3e4fe",
+        "outline": "#75777d",
+        "surface": "#f7f9fb",
+        "outline-variant": "#c5c6cd",
+        "surface-container-highest": "#e0e3e5",
+        "secondary": "#505f76",
+        "on-tertiary-fixed-variant": "#564427",
+        "on-surface-variant": "#45474c",
+        "error-container": "#ffdad6",
+        "on-secondary-container": "#54647a",
+        "secondary-fixed-dim": "#b7c8e1",
+        "surface-container-lowest": "#ffffff",
+        "on-background": "#191c1e",
+        "inverse-primary": "#bcc7de",
+        "inverse-surface": "#2d3133",
+        "on-primary": "#ffffff",
+        "on-error-container": "#93000a",
+        "primary-fixed": "#d8e3fb",
+        "on-tertiary-container": "#a38c6a",
+        "on-secondary": "#ffffff",
+        "primary": "#091426",
+        "surface-dim": "#d8dadc",
+        "error": "#ba1a1a",
+        "surface-bright": "#f7f9fb",
+        "on-tertiary": "#ffffff",
+        "surface-variant": "#e0e3e5",
+        "surface-container-low": "#f2f4f6",
+        "on-error": "#ffffff",
+        "on-primary-fixed-variant": "#3c475a",
+        "primary-container": "#1e293b",
+        "tertiary-container": "#35260c",
+        "tertiary": "#1e1200",
+        "on-primary-fixed": "#111c2d",
+        "primary-fixed-dim": "#bcc7de",
+        "on-surface": "#191c1e",
+        "surface-tint": "#545f73",
+        "on-secondary-fixed-variant": "#38485d",
+        "tertiary-fixed-dim": "#ddc39d",
+        "on-primary-container": "#8590a6",
+        "on-secondary-fixed": "#0b1c30",
+        "on-tertiary-fixed": "#271902",
+        "background": "#f7f9fb",
+        "secondary-container": "#d0e1fb"
+      },
+      "fonts": [
+        "Inter",
+        "JetBrains Mono",
+        "Material Symbols Outlined"
+      ],
+      "layoutHints": {
+        "gridCols": 1,
+        "flexDirection": "col"
+      },
+      "behaviorContract": [
+        {
+          "kind": "button",
+          "label": "Go Back",
+          "icon": "arrow_back",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Cancel",
+          "icon": null,
+          "action": "dismiss",
+          "expectedBehavior": "close dialog/panel or return to previous state"
+        },
+        {
+          "kind": "button",
+          "label": "Instrument",
+          "icon": "save",
+          "action": "form-submit",
+          "expectedBehavior": "validate inputs and submit/apply changes"
+        },
+        {
+          "kind": "button",
+          "label": "Add Spec",
+          "icon": "add",
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "Remove Spec",
+          "icon": "delete",
+          "action": "destructive",
+          "expectedBehavior": "perform destructive action with visible feedback or confirmation"
+        },
+        {
+          "kind": "input",
+          "label": "inst-name",
+          "type": "text",
+          "placeholder": "",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "label": "inst-model",
+          "type": "text",
+          "placeholder": "",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "label": "inst-serial",
+          "type": "text",
+          "placeholder": "",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "label": "text",
+          "type": "text",
+          "placeholder": "",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "label": "inst-freq",
+          "type": "select",
+          "placeholder": "",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "label": "inst-last-cal",
+          "type": "date",
+          "placeholder": "",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "label": "inst-tech",
+          "type": "select",
+          "placeholder": "",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        }
+      ],
+      "tabBar": [],
+      "title": "Instrument Editor - CalibraTrack Bench R6X2"
+    },
+    "70bcc9142eb84cee923553834919af30": {
+      "screenId": "70bcc9142eb84cee923553834919af30",
+      "materialSymbolsRequired": true,
+      "sections": [
+        {
+          "tag": "nav",
+          "layout": "block",
+          "classes": [
+            "bg-surface-container-low",
+            "dark:bg-primary",
+            "text-primary",
+            "dark:text-primary-fixed",
+            "docked",
+            "left-0",
+            "h-full",
+            "w-64",
+            "border-r",
+            "border-outline-variant"
+          ],
+          "childCount": 11
+        },
+        {
+          "tag": "header",
+          "layout": "flex-row",
+          "classes": [
+            "bg-surface-container-lowest",
+            "dark:bg-inverse-surface",
+            "text-primary",
+            "dark:text-inverse-primary",
+            "font-headline-sm",
+            "text-headline-sm",
+            "flex",
+            "justify-between",
+            "items-center",
+            "w-full"
+          ],
+          "childCount": 4
+        },
+        {
+          "tag": "main",
+          "layout": "flex-row",
+          "classes": [
+            "flex-1",
+            "p-margin-mobile",
+            "md:p-margin-desktop",
+            "overflow-x-hidden"
+          ],
+          "childCount": 31
+        }
+      ],
+      "buttons": [
+        {
+          "kind": "button",
+          "label": "New Calibration",
+          "classes": [
+            "w-full",
+            "bg-primary",
+            "text-on-primary",
+            "font-label-md",
+            "text-label-md",
+            "py-sm",
+            "px-md",
+            "rounded",
+            "hover:bg-primary-container",
+            "transition-colors",
+            "shadow-sm"
+          ],
+          "icon": null,
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "notifications",
+          "classes": [
+            "p-sm",
+            "text-secondary",
+            "hover:bg-surface-container",
+            "rounded-full",
+            "transition-colors",
+            "hidden",
+            "md:block"
+          ],
+          "icon": "notifications",
+          "action": "navigate",
+          "expectedBehavior": "navigate:/notifications",
+          "expectedRoute": "/notifications",
+          "routeInferred": true
+        },
+        {
+          "kind": "button",
+          "label": "settings",
+          "classes": [
+            "p-sm",
+            "text-secondary",
+            "hover:bg-surface-container",
+            "rounded-full",
+            "transition-colors",
+            "hidden",
+            "md:block"
+          ],
+          "icon": "settings",
+          "action": "navigate",
+          "expectedBehavior": "navigate:/settings",
+          "expectedRoute": "/settings",
+          "routeInferred": true
+        },
+        {
+          "kind": "button",
+          "label": "Certify",
+          "classes": [
+            "hidden",
+            "md:block",
+            "bg-surface",
+            "border",
+            "border-outline-variant",
+            "text-primary",
+            "font-label-md",
+            "text-label-md",
+            "py-[6px]",
+            "px-md",
+            "rounded",
+            "hover:bg-surface-container",
+            "transition-colors"
+          ],
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Add Reading",
+          "classes": [
+            "bg-primary",
+            "text-on-primary",
+            "font-label-md",
+            "text-label-md",
+            "py-[6px]",
+            "px-md",
+            "rounded",
+            "hover:bg-primary-container",
+            "transition-colors",
+            "shadow-sm"
+          ],
+          "icon": null,
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "Instrument",
+          "classes": [
+            "bg-primary",
+            "text-on-primary",
+            "font-label-md",
+            "text-label-md",
+            "py-sm",
+            "px-md",
+            "rounded",
+            "hover:bg-primary-container",
+            "transition-colors",
+            "flex",
+            "items-center",
+            "gap-xs"
+          ],
+          "icon": "add",
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "Status",
+          "classes": [
+            "whitespace-nowrap",
+            "bg-surface-container-lowest",
+            "border",
+            "border-outline-variant",
+            "text-secondary",
+            "font-label-md",
+            "text-label-md",
+            "py-[4px]",
+            "px-sm",
+            "rounded",
+            "flex",
+            "items-center",
+            "gap-xs",
+            "hover:bg-surface-container",
+            "transition-colors"
+          ],
+          "icon": "arrow_drop_down",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Technician",
+          "classes": [
+            "whitespace-nowrap",
+            "bg-surface-container-lowest",
+            "border",
+            "border-outline-variant",
+            "text-secondary",
+            "font-label-md",
+            "text-label-md",
+            "py-[4px]",
+            "px-sm",
+            "rounded",
+            "flex",
+            "items-center",
+            "gap-xs",
+            "hover:bg-surface-container",
+            "transition-colors"
+          ],
+          "icon": "arrow_drop_down",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Date Range",
+          "classes": [
+            "whitespace-nowrap",
+            "bg-surface-container-lowest",
+            "border",
+            "border-outline-variant",
+            "text-secondary",
+            "font-label-md",
+            "text-label-md",
+            "py-[4px]",
+            "px-sm",
+            "rounded",
+            "flex",
+            "items-center",
+            "gap-xs",
+            "hover:bg-surface-container",
+            "transition-colors"
+          ],
+          "icon": "calendar_today",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Edit",
+          "classes": [
+            "text-primary",
+            "hover:text-primary-container",
+            "font-label-md",
+            "text-label-md",
+            "opacity-0",
+            "group-hover:opacity-100",
+            "transition-opacity",
+            "focus:opacity-100"
+          ],
+          "icon": null,
+          "action": "edit",
+          "expectedBehavior": "open edit flow or update selected item/state"
+        },
+        {
+          "kind": "button",
+          "label": "chevron_left",
+          "classes": [
+            "p-xs",
+            "rounded",
+            "hover:bg-surface-container",
+            "transition-colors",
+            "disabled:opacity-50"
+          ],
+          "icon": "chevron_left",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "chevron_right",
+          "classes": [
+            "p-xs",
+            "rounded",
+            "hover:bg-surface-container",
+            "transition-colors"
+          ],
+          "icon": "chevron_right",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Bench R6X2 Station Active",
+          "classes": [],
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        }
+      ],
+      "inputs": [
+        {
+          "kind": "input",
+          "type": "text",
+          "label": "Search instruments, models, IDs...",
+          "placeholder": "Search instruments, models, IDs...",
+          "name": "",
+          "classes": [
+            "w-full",
+            "pl-xl",
+            "pr-sm",
+            "py-sm",
+            "bg-surface-container",
+            "border",
+            "border-outline-variant",
+            "rounded",
+            "focus:outline-none",
+            "focus:border-primary",
+            "focus:ring-1",
+            "focus:ring-primary",
+            "font-body-sm",
+            "text-body-sm",
+            "text-on-surface",
+            "placeholder-on-surface-variant",
+            "transition-all"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "type": "text",
+          "label": "Filter instruments...",
+          "placeholder": "Filter instruments...",
+          "name": "",
+          "classes": [
+            "w-full",
+            "pl-lg",
+            "pr-sm",
+            "py-[6px]",
+            "bg-surface-container-lowest",
+            "border",
+            "border-outline-variant",
+            "rounded",
+            "focus:outline-none",
+            "focus:border-primary",
+            "focus:ring-1",
+            "focus:ring-primary",
+            "font-body-sm",
+            "text-body-sm",
+            "text-on-surface",
+            "placeholder-on-surface-variant"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        }
+      ],
+      "navLinks": [
+        {
+          "kind": "link",
+          "label": "dashboard",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "dashboard",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Inventory",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "precision_manufacturing",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Calibration Log",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "history_edu",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Reports",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "analytics",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Standards",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "rule",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Support",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "help",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "archive",
+          "href": "#",
+          "classes": [
+            "font-label-md",
+            "text-label-md"
+          ],
+          "icon": "archive",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        }
+      ],
+      "cards": [],
+      "icons": [
+        "dashboard",
+        "precision_manufacturing",
+        "history_edu",
+        "analytics",
+        "rule",
+        "help",
+        "archive",
+        "search",
+        "notifications",
+        "settings",
+        "add",
+        "filter_list",
+        "arrow_drop_down",
+        "calendar_today",
+        "chevron_left",
+        "chevron_right"
+      ],
+      "images": [
+        {
+          "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuBlX0EfEpivi1ce7tN63hmxoP-QVaUBbkWGKFaCh8frF4blguveH0GGZrMVnCNswZEMNdzleDD0o9jZxY8R193vjX5ty1eusHyJmSi42C9RdRBG34CdmAm6Z_rLeAk2rmUmpXWel-hek9dnDAEJGi",
+          "alt": "Technician Profile"
+        }
+      ],
+      "cssVars": {},
+      "colorPalette": {
+        "tertiary-fixed": "#fadfb8",
+        "inverse-on-surface": "#eff1f3",
+        "surface-container-high": "#e6e8ea",
+        "surface-container": "#eceef0",
+        "secondary-fixed": "#d3e4fe",
+        "outline": "#75777d",
+        "surface": "#f7f9fb",
+        "outline-variant": "#c5c6cd",
+        "surface-container-highest": "#e0e3e5",
+        "secondary": "#505f76",
+        "on-tertiary-fixed-variant": "#564427",
+        "on-surface-variant": "#45474c",
+        "error-container": "#ffdad6",
+        "on-secondary-container": "#54647a",
+        "secondary-fixed-dim": "#b7c8e1",
+        "surface-container-lowest": "#ffffff",
+        "on-background": "#191c1e",
+        "inverse-primary": "#bcc7de",
+        "inverse-surface": "#2d3133",
+        "on-primary": "#ffffff",
+        "on-error-container": "#93000a",
+        "primary-fixed": "#d8e3fb",
+        "on-tertiary-container": "#a38c6a",
+        "on-secondary": "#ffffff",
+        "primary": "#091426",
+        "surface-dim": "#d8dadc",
+        "error": "#ba1a1a",
+        "surface-bright": "#f7f9fb",
+        "on-tertiary": "#ffffff",
+        "surface-variant": "#e0e3e5",
+        "surface-container-low": "#f2f4f6",
+        "on-error": "#ffffff",
+        "on-primary-fixed-variant": "#3c475a",
+        "primary-container": "#1e293b",
+        "tertiary-container": "#35260c",
+        "tertiary": "#1e1200",
+        "on-primary-fixed": "#111c2d",
+        "primary-fixed-dim": "#bcc7de",
+        "on-surface": "#191c1e",
+        "surface-tint": "#545f73",
+        "on-secondary-fixed-variant": "#38485d",
+        "tertiary-fixed-dim": "#ddc39d",
+        "on-primary-container": "#8590a6",
+        "on-secondary-fixed": "#0b1c30",
+        "on-tertiary-fixed": "#271902",
+        "background": "#f7f9fb",
+        "secondary-container": "#d0e1fb"
+      },
+      "fonts": [
+        "Inter",
+        "JetBrains Mono",
+        "Material Symbols Outlined"
+      ],
+      "layoutHints": {
+        "gridCols": 2,
+        "flexDirection": "col"
+      },
+      "behaviorContract": [
+        {
+          "kind": "link",
+          "label": "dashboard",
+          "icon": "dashboard",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Inventory",
+          "icon": "precision_manufacturing",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Calibration Log",
+          "icon": "history_edu",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Reports",
+          "icon": "analytics",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Standards",
+          "icon": "rule",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "Support",
+          "icon": "help",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "archive",
+          "icon": "archive",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "button",
+          "label": "New Calibration",
+          "icon": null,
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "notifications",
+          "icon": "notifications",
+          "action": "navigate",
+          "route": "/notifications",
+          "expectedBehavior": "navigate:/notifications"
+        },
+        {
+          "kind": "button",
+          "label": "settings",
+          "icon": "settings",
+          "action": "navigate",
+          "route": "/settings",
+          "expectedBehavior": "navigate:/settings"
+        },
+        {
+          "kind": "button",
+          "label": "Certify",
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Add Reading",
+          "icon": null,
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "Instrument",
+          "icon": "add",
+          "action": "create",
+          "expectedBehavior": "open create flow or add a new item/state"
+        },
+        {
+          "kind": "button",
+          "label": "Status",
+          "icon": "arrow_drop_down",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Technician",
+          "icon": "arrow_drop_down",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Date Range",
+          "icon": "calendar_today",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Edit",
+          "icon": null,
+          "action": "edit",
+          "expectedBehavior": "open edit flow or update selected item/state"
+        },
+        {
+          "kind": "button",
+          "label": "chevron_left",
+          "icon": "chevron_left",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "chevron_right",
+          "icon": "chevron_right",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "Bench R6X2 Station Active",
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "input",
+          "label": "Search instruments, models, IDs...",
+          "type": "text",
+          "placeholder": "Search instruments, models, IDs...",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "label": "Filter instruments...",
+          "type": "text",
+          "placeholder": "Filter instruments...",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        }
+      ],
+      "tabBar": [
+        {
+          "kind": "button",
+          "label": "Bench R6X2 Station Active",
+          "icon": null,
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "dashboard",
+          "icon": "dashboard",
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "Inventory",
+          "icon": "precision_manufacturing",
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "Calibration Log",
+          "icon": "history_edu",
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "Reports",
+          "icon": "analytics",
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "Standards",
+          "icon": "rule",
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "button",
+          "label": "New Calibration",
+          "icon": null,
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "Support",
+          "icon": "help",
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "archive",
+          "icon": "archive",
+          "route": "#",
+          "active": true
+        }
+      ],
+      "title": "Instrument Operations - CalibraTrack Bench R6X2"
+    }
+  }
+}

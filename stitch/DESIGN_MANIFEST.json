@@ -1,0 +1,35 @@
+[
+  {
+    "screenId": "309a110c43854d6a8d8c137a418866eb",
+    "title": "Instrument Editor - CalibraTrack Bench R6X2",
+    "htmlFile": "309a110c43854d6a8d8c137a418866eb.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2U3NTIxNTVjOGE1NzQ1NzJhMmZlNTMyNDFhMjI1NjExEgsSBxCN19Wi9xcYAZIBJAoKcHJvamVjdF9pZBIWQhQxNDExODEyODgxNTQ4NDM3ODE5OQ&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/calibratrack-bench-r6x2-c3009520/stitch/309a110c43854d6a8d8c137a418866eb.html",
+    "surfaceIds": [
+      "SURF_INSTRUMENT_EDITOR"
+    ]
+  },
+  {
+    "screenId": "15d44604fb0d4973bfa69715243d2562",
+    "title": "Empty and Error Recovery - CalibraTrack Bench R6X2",
+    "htmlFile": "15d44604fb0d4973bfa69715243d2562.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzNkNDU5MjJiZDRkZjRiZmZhNTFjYzlhNjI4MmJjYjI1EgsSBxCN19Wi9xcYAZIBJAoKcHJvamVjdF9pZBIWQhQxNDExODEyODgxNTQ4NDM3ODE5OQ&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/calibratrack-bench-r6x2-c3009520/stitch/15d44604fb0d4973bfa69715243d2562.html",
+    "surfaceIds": [
+      "SURF_EMPTY_AND_ERROR_RECOVERY"
+    ]
+  },
+  {
+    "screenId": "70bcc9142eb84cee923553834919af30",
+    "title": "Instrument Operations - CalibraTrack Bench R6X2",
+    "htmlFile": "70bcc9142eb84cee923553834919af30.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzIxYjU4MGVmNzZmYzQ2YmRiNWQ0NjFiODk3Yjg3YzhkEgsSBxCN19Wi9xcYAZIBJAoKcHJvamVjdF9pZBIWQhQxNDExODEyODgxNTQ4NDM3ODE5OQ&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/calibratrack-bench-r6x2-c3009520/stitch/70bcc9142eb84cee923553834919af30.html",
+    "surfaceIds": [
+      "SURF_INSTRUMENT_OPERATIONS"
+    ]
+  }
+]
