@@ -7,6 +7,7 @@
 // 3. Wire interactive controls through the typed actions prop
 // 4. Replace placeholder data with props/state
 
+import { useState } from "react";
 import { ArrowLeft, Circle, Plus, Save, Trash2, User } from "lucide-react";
 
 
@@ -17,6 +18,52 @@ export interface InstrumentEditorCalibratrackBenchR6x2Props {
 }
 
 export function InstrumentEditorCalibratrackBenchR6x2({ actions }: InstrumentEditorCalibratrackBenchR6x2Props) {
+  const [instrumentName, setInstrumentName] = useState("Fluke 87V Industrial Multimeter");
+  const [modelNumber, setModelNumber] = useState("87V");
+  const [serialNumber, setSerialNumber] = useState("");
+  const [frequency, setFrequency] = useState("12");
+  const [lastCalibration, setLastCalibration] = useState("2023-10-15");
+  const [technician, setTechnician] = useState("tech1");
+  const [specs, setSpecs] = useState([
+    { parameter: "DC Voltage", range: "0-1000V", tolerance: "±(0.05% + 1)" },
+    { parameter: "AC Voltage", range: "0-1000V", tolerance: "±(0.7% + 2)" },
+  ]);
+  const [showErrors, setShowErrors] = useState(true);
+  const [editorMessage, setEditorMessage] = useState("Serial number is required");
+
+  const markUnsaved = () => {
+    setEditorMessage("Unsaved changes");
+  };
+
+  const updateSpec = (index: number, field: "parameter" | "range" | "tolerance", value: string) => {
+    setSpecs((current) => current.map((spec, specIndex) => (specIndex === index ? { ...spec, [field]: value } : spec)));
+    markUnsaved();
+  };
+
+  const removeSpec = (index: number, actionId: InstrumentEditorCalibratrackBenchR6x2ActionId) => {
+    setSpecs((current) => current.filter((_, specIndex) => specIndex !== index));
+    setEditorMessage("Specification removed");
+    actions?.[actionId]?.();
+  };
+
+  const addSpec = () => {
+    setSpecs((current) => [...current, { parameter: "New parameter", range: "Pending range", tolerance: "Pending tolerance" }]);
+    setEditorMessage("Specification added");
+    actions?.["button-4-4"]?.();
+  };
+
+  const saveInstrument = () => {
+    const invalid = !instrumentName.trim() || !serialNumber.trim() || !frequency;
+    setShowErrors(invalid);
+    if (invalid) {
+      setEditorMessage("Complete required fields before saving");
+      return;
+    }
+
+    setEditorMessage("Instrument saved");
+    actions?.["save-instrument-3"]?.();
+  };
+
   return (
     <>
       {/* TopNavBar (Nav Suppressed as this is a focused task, but header remains) */}
@@ -34,7 +81,7 @@ export function InstrumentEditorCalibratrackBenchR6x2({ actions }: InstrumentEdi
       <button className="font-label-md text-label-md px-md py-sm border border-outline text-secondary hover:bg-surface-container rounded transition-colors" type="button" data-action-id="cancel-2" onClick={actions?.["cancel-2"]}>
                       Cancel
                   </button>
-      <button className="font-label-md text-label-md px-md py-sm bg-primary text-on-primary hover:bg-primary-container rounded transition-colors flex items-center gap-xs" type="button" data-action-id="save-instrument-3" onClick={actions?.["save-instrument-3"]}>
+      <button className="font-label-md text-label-md px-md py-sm bg-primary text-on-primary hover:bg-primary-container rounded transition-colors flex items-center gap-xs" type="button" data-action-id="save-instrument-3" onClick={saveInstrument}>
       <Save className="text-[16px]" aria-hidden={true} focusable="false" /> Save Instrument
                   </button>
       </div>
@@ -45,6 +92,7 @@ export function InstrumentEditorCalibratrackBenchR6x2({ actions }: InstrumentEdi
       <Circle className="text-outline" aria-hidden={true} focusable="false" />
       <h1 className="font-headline-sm text-headline-sm text-on-surface">Edit Instrument</h1>
       </div>
+      <p className="font-body-sm text-body-sm text-secondary mb-md" aria-live="polite">{editorMessage}</p>
       <form className="space-y-xl" id="instrument-form">
       {/* Section 1: General Info */}
       <section className="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden">
@@ -54,18 +102,18 @@ export function InstrumentEditorCalibratrackBenchR6x2({ actions }: InstrumentEdi
       <div className="p-lg grid grid-cols-1 md:grid-cols-2 gap-lg">
       <div className="col-span-1 md:col-span-2">
       <label className="block font-label-md text-label-md text-on-surface-variant mb-xs" htmlFor="inst-name">Instrument Name <span className="text-error">*</span></label>
-      <input className="w-full border border-outline-variant rounded bg-surface px-md py-sm font-body-md text-on-surface transition-colors" id="inst-name" oninput="markUnsaved()" required={true} type="text" value="Fluke 87V Industrial Multimeter" />
+      <input className="w-full border border-outline-variant rounded bg-surface px-md py-sm font-body-md text-on-surface transition-colors" id="inst-name" onChange={(event) => { setInstrumentName(event.target.value); markUnsaved(); }} required={true} type="text" value={instrumentName} />
       </div>
       <div>
       <label className="block font-label-md text-label-md text-on-surface-variant mb-xs" htmlFor="inst-model">Model Number</label>
-      <input className="w-full border border-outline-variant rounded bg-surface px-md py-sm font-body-md text-on-surface transition-colors" id="inst-model" oninput="markUnsaved()" type="text" value="87V" />
+      <input className="w-full border border-outline-variant rounded bg-surface px-md py-sm font-body-md text-on-surface transition-colors" id="inst-model" onChange={(event) => { setModelNumber(event.target.value); markUnsaved(); }} type="text" value={modelNumber} />
       </div>
       <div>
       <label className="block font-label-md text-label-md text-error mb-xs" htmlFor="inst-serial">Serial Number <span className="text-error">*</span></label>
-      <input className="w-full border border-error rounded bg-error-container/20 px-md py-sm font-data-mono text-data-mono text-on-surface transition-colors" id="inst-serial" oninput="markUnsaved()" required={true} type="text" value="" />
-      <p className="font-body-sm text-body-sm text-error mt-xs flex items-center gap-xs">
+      <input className="w-full border border-error rounded bg-error-container/20 px-md py-sm font-data-mono text-data-mono text-on-surface transition-colors" id="inst-serial" onChange={(event) => { setSerialNumber(event.target.value); setShowErrors(false); markUnsaved(); }} required={true} type="text" value={serialNumber} />
+      {showErrors && !serialNumber.trim() ? <p className="font-body-sm text-body-sm text-error mt-xs flex items-center gap-xs">
       <Circle className="text-[14px]" aria-hidden={true} focusable="false" /> Serial number is required
-                              </p>
+                              </p> : null}
       </div>
       </div>
       </section>
@@ -73,7 +121,7 @@ export function InstrumentEditorCalibratrackBenchR6x2({ actions }: InstrumentEdi
       <section className="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden">
       <div className="bg-surface-container-low px-md py-sm border-b border-outline-variant flex justify-between items-center">
       <h2 className="font-label-md text-label-md text-on-surface uppercase tracking-wider">Calibration Specifications</h2>
-      <button className="text-primary hover:bg-primary-fixed/20 p-xs rounded transition-colors" title="Add Spec" type="button" data-action-id="button-4-4" onClick={actions?.["button-4-4"]}>
+      <button className="text-primary hover:bg-primary-fixed/20 p-xs rounded transition-colors" title="Add Spec" type="button" data-action-id="button-4-4" onClick={addSpec}>
       <Plus className="text-[18px]" aria-hidden={true} focusable="false" />
       </button>
       </div>
@@ -82,17 +130,17 @@ export function InstrumentEditorCalibratrackBenchR6x2({ actions }: InstrumentEdi
       <div className="flex flex-col md:flex-row gap-md items-start md:items-end">
       <div className="flex-1 w-full">
       <label className="block font-label-md text-label-md text-on-surface-variant mb-xs">Parameter</label>
-      <input className="w-full border border-outline-variant rounded bg-surface px-md py-sm font-body-md text-on-surface" oninput="markUnsaved()" type="text" value="DC Voltage" />
+      <input className="w-full border border-outline-variant rounded bg-surface px-md py-sm font-body-md text-on-surface" onChange={(event) => updateSpec(0, "parameter", event.target.value)} type="text" value={specs[0]?.parameter ?? ""} />
       </div>
       <div className="flex-1 w-full">
       <label className="block font-label-md text-label-md text-on-surface-variant mb-xs">Range</label>
-      <input className="w-full border border-outline-variant rounded bg-surface px-md py-sm font-data-mono text-data-mono text-on-surface" oninput="markUnsaved()" type="text" value="0-1000V" />
+      <input className="w-full border border-outline-variant rounded bg-surface px-md py-sm font-data-mono text-data-mono text-on-surface" onChange={(event) => updateSpec(0, "range", event.target.value)} type="text" value={specs[0]?.range ?? ""} />
       </div>
       <div className="flex-1 w-full">
       <label className="block font-label-md text-label-md text-on-surface-variant mb-xs">Accuracy / Tolerance</label>
-      <input className="w-full border border-outline-variant rounded bg-surface px-md py-sm font-data-mono text-data-mono text-on-surface" oninput="markUnsaved()" type="text" value="±(0.05% + 1)" />
+      <input className="w-full border border-outline-variant rounded bg-surface px-md py-sm font-data-mono text-data-mono text-on-surface" onChange={(event) => updateSpec(0, "tolerance", event.target.value)} type="text" value={specs[0]?.tolerance ?? ""} />
       </div>
-      <button className="text-outline hover:text-error transition-colors p-sm mb-[2px]" title="Remove Spec" type="button" data-action-id="button-5-5" onClick={actions?.["button-5-5"]}>
+      <button className="text-outline hover:text-error transition-colors p-sm mb-[2px]" title="Remove Spec" type="button" data-action-id="button-5-5" onClick={() => removeSpec(0, "button-5-5")}>
       <Trash2 aria-hidden={true} focusable="false" />
       </button>
       </div>
@@ -100,17 +148,17 @@ export function InstrumentEditorCalibratrackBenchR6x2({ actions }: InstrumentEdi
       <div className="flex flex-col md:flex-row gap-md items-start md:items-end">
       <div className="flex-1 w-full">
       <label className="block font-label-md text-label-md text-on-surface-variant mb-xs">Parameter</label>
-      <input className="w-full border border-outline-variant rounded bg-surface px-md py-sm font-body-md text-on-surface" oninput="markUnsaved()" type="text" value="AC Voltage" />
+      <input className="w-full border border-outline-variant rounded bg-surface px-md py-sm font-body-md text-on-surface" onChange={(event) => updateSpec(1, "parameter", event.target.value)} type="text" value={specs[1]?.parameter ?? ""} />
       </div>
       <div className="flex-1 w-full">
       <label className="block font-label-md text-label-md text-on-surface-variant mb-xs">Range</label>
-      <input className="w-full border border-outline-variant rounded bg-surface px-md py-sm font-data-mono text-data-mono text-on-surface" oninput="markUnsaved()" type="text" value="0-1000V" />
+      <input className="w-full border border-outline-variant rounded bg-surface px-md py-sm font-data-mono text-data-mono text-on-surface" onChange={(event) => updateSpec(1, "range", event.target.value)} type="text" value={specs[1]?.range ?? ""} />
       </div>
       <div className="flex-1 w-full">
       <label className="block font-label-md text-label-md text-on-surface-variant mb-xs">Accuracy / Tolerance</label>
-      <input className="w-full border border-outline-variant rounded bg-surface px-md py-sm font-data-mono text-data-mono text-on-surface" oninput="markUnsaved()" type="text" value="±(0.7% + 2)" />
+      <input className="w-full border border-outline-variant rounded bg-surface px-md py-sm font-data-mono text-data-mono text-on-surface" onChange={(event) => updateSpec(1, "tolerance", event.target.value)} type="text" value={specs[1]?.tolerance ?? ""} />
       </div>
-      <button className="text-outline hover:text-error transition-colors p-sm mb-[2px]" title="Remove Spec" type="button" data-action-id="button-6-6" onClick={actions?.["button-6-6"]}>
+      <button className="text-outline hover:text-error transition-colors p-sm mb-[2px]" title="Remove Spec" type="button" data-action-id="button-6-6" onClick={() => removeSpec(1, "button-6-6")}>
       <Trash2 aria-hidden={true} focusable="false" />
       </button>
       </div>
@@ -126,10 +174,10 @@ export function InstrumentEditorCalibratrackBenchR6x2({ actions }: InstrumentEdi
       <div className="p-lg space-y-md">
       <div>
       <label className="block font-label-md text-label-md text-on-surface-variant mb-xs" htmlFor="inst-freq">Frequency (Months) <span className="text-error">*</span></label>
-      <select className="w-full border border-outline-variant rounded bg-surface px-md py-sm font-body-md text-on-surface transition-colors" id="inst-freq" onchange="markUnsaved()" required={true}>
+      <select className="w-full border border-outline-variant rounded bg-surface px-md py-sm font-body-md text-on-surface transition-colors" id="inst-freq" onChange={(event) => { setFrequency(event.target.value); markUnsaved(); }} required={true} value={frequency}>
       <option value="3">3 Months (Quarterly)</option>
       <option value="6">6 Months (Semi-Annual)</option>
-      <option selected={true} value="12">12 Months (Annual)</option>
+      <option value="12">12 Months (Annual)</option>
       <option value="24">24 Months (Bi-Annual)</option>
       </select>
       </div>
@@ -137,7 +185,7 @@ export function InstrumentEditorCalibratrackBenchR6x2({ actions }: InstrumentEdi
       <label className="block font-label-md text-label-md text-on-surface-variant mb-xs" htmlFor="inst-last-cal">Last Calibration Date</label>
       <div className="relative">
       <Circle className="absolute left-md top-1/2 -translate-y-1/2 text-outline-variant text-[18px]" aria-hidden={true} focusable="false" />
-      <input className="w-full pl-xl pr-md py-sm border border-outline-variant rounded bg-surface font-data-mono text-data-mono text-on-surface transition-colors" id="inst-last-cal" oninput="markUnsaved()" type="date" value="2023-10-15" />
+      <input className="w-full pl-xl pr-md py-sm border border-outline-variant rounded bg-surface font-data-mono text-data-mono text-on-surface transition-colors" id="inst-last-cal" onChange={(event) => { setLastCalibration(event.target.value); markUnsaved(); }} type="date" value={lastCalibration} />
       </div>
       </div>
       </div>
@@ -152,9 +200,9 @@ export function InstrumentEditorCalibratrackBenchR6x2({ actions }: InstrumentEdi
       <label className="block font-label-md text-label-md text-on-surface-variant mb-xs" htmlFor="inst-tech">Assigned Technician</label>
       <div className="relative">
       <User className="absolute left-md top-1/2 -translate-y-1/2 text-outline-variant text-[18px]" aria-hidden={true} focusable="false" />
-      <select className="w-full pl-xl pr-md py-sm border border-outline-variant rounded bg-surface font-body-md text-on-surface transition-colors" id="inst-tech" onchange="markUnsaved()">
+      <select className="w-full pl-xl pr-md py-sm border border-outline-variant rounded bg-surface font-body-md text-on-surface transition-colors" id="inst-tech" onChange={(event) => { setTechnician(event.target.value); markUnsaved(); }} value={technician}>
       <option value="unassigned">-- Unassigned --</option>
-      <option selected={true} value="tech1">Sarah Jenkins (L3)</option>
+      <option value="tech1">Sarah Jenkins (L3)</option>
       <option value="tech2">Marcus Roe (L2)</option>
       <option value="tech3">David Chen (L1)</option>
       </select>

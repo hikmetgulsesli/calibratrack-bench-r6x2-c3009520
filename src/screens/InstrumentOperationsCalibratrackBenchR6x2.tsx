@@ -21,10 +21,10 @@ export function InstrumentOperationsCalibratrackBenchR6x2({ actions }: Instrumen
     <>
       {/* SideNavBar */}
       <nav className="bg-surface-container-low dark:bg-primary text-primary dark:text-primary-fixed docked left-0 h-full w-64 border-r border-outline-variant dark:border-outline flat no shadows fixed left-0 top-0 h-full flex flex-col py-lg z-40 hidden md:flex">
-      <div className="px-lg pb-xl border-b border-outline-variant">
+      <button className="px-lg pb-xl border-b border-outline-variant text-left w-full hover:bg-surface-container-highest dark:hover:bg-primary-container transition-colors" type="button" data-action-id="dashboard-1" onClick={actions?.["dashboard-1"]}>
       <h1 className="font-headline-sm text-headline-sm font-extrabold text-on-surface dark:text-on-primary">Bench R6X2</h1>
       <p className="font-label-md text-label-md text-secondary mt-1">Station Active</p>
-      </div>
+      </button>
       <div className="flex-1 overflow-y-auto py-md px-sm">
       <ul className="space-y-sm">
       <li>
