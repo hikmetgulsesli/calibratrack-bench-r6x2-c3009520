@@ -9,6 +9,7 @@ import {
 } from './screens';
 import { publishAppBridge } from './test/bridge';
 import { type AppRoute, useCalibraTrackStore } from './features/calibratrack-bench-r6x2/calibratrack-bench-r6x2.store';
+import { actSaveRecord } from './features/surf-instrument-editor/act_save_record';
 
 const routeByAction: Record<string, AppRoute> = {
   'dashboard-1': 'dashboard',
@@ -101,7 +102,7 @@ export default function App() {
     () => ({
       'button-1-1': () => store.setActivePanel('operations'),
       'cancel-2': () => store.setActivePanel('operations'),
-      'save-instrument-3': () => store.setActivePanel('operations'),
+      'save-instrument-3': () => actSaveRecord(store),
       'button-4-4': store.addReading,
       'button-5-5': () => store.updateSelectedStatus('due'),
       'button-6-6': () => store.updateSelectedStatus('archived'),
