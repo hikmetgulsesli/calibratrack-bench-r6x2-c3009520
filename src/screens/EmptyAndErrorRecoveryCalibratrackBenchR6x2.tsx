@@ -27,8 +27,8 @@ export function EmptyAndErrorRecoveryCalibratrackBenchR6x2({ actions }: EmptyAnd
       <Circle className="text-on-primary-container" aria-hidden={true} focusable="false" />
       </div>
       <button aria-label="Bench R6X2 Station Active" className="text-left rounded focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" type="button" data-action-id="inventory-2" onClick={actions?.["inventory-2"]}>
-      <h1 className="font-headline-sm text-headline-sm font-extrabold text-on-surface truncate">Bench R6X2</h1>
-      <p className="font-body-sm text-body-sm text-on-surface-variant truncate">Station Active</p>
+      <h1 className="font-headline-sm text-headline-sm font-extrabold text-on-surface truncate">Bench R6X2 Station Active</h1>
+      <p className="font-body-sm text-body-sm text-on-surface-variant truncate">Inventory workspace</p>
       </button>
       </div>
       {/* CTA */}
@@ -124,9 +124,9 @@ export function EmptyAndErrorRecoveryCalibratrackBenchR6x2({ actions }: EmptyAnd
                       </p>
       {/* Technical Details Block */}
       <div className="w-full bg-surface flex items-start gap-sm border border-outline-variant rounded p-sm mb-xl text-left">
-      <button aria-label="dns" className="text-on-surface-variant mt-0.5 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" type="button" data-action-id="retry-load-6" onClick={actions?.["retry-load-6"]}>
+      <button aria-label="dns" className="text-on-surface-variant mt-0.5 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 flex items-center gap-xs" type="button" data-action-id="retry-load-6" onClick={actions?.["retry-load-6"]}>
       <Server className="text-[18px]" aria-hidden={true} focusable="false" />
-      <span className="sr-only">dns</span>
+      <span className="font-label-sm text-label-sm">dns</span>
       </button>
       <div>
       <span className="block font-label-sm text-label-sm text-on-surface-variant mb-xs">Diagnostic Info</span>
