@@ -10,7 +10,9 @@ const routeByAction: Record<string, AppRoute> = {
   'archive-7': 'archive',
 };
 
-export function actSearchRecords(store: CalibraTrackStore, actionId: string) {
+type SearchRecordsStore = Pick<CalibraTrackStore, 'setActiveRoute'>;
+
+export function actSearchRecords(store: SearchRecordsStore, actionId: string) {
   const route = routeByAction[actionId];
   if (route) {
     store.setActiveRoute(route);

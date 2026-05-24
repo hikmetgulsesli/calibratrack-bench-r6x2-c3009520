@@ -7,7 +7,9 @@ const recordIdByEditAction: Record<string, string> = {
   'edit-13': 'ctb-r6x2-004',
 };
 
-export function actSelectRecord(store: CalibraTrackStore, actionId: string) {
+type SelectRecordStore = Pick<CalibraTrackStore, 'selectRecord'>;
+
+export function actSelectRecord(store: SelectRecordStore, actionId: string) {
   const recordId = recordIdByEditAction[actionId];
   if (recordId) {
     store.selectRecord(recordId);

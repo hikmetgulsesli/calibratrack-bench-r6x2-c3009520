@@ -18,12 +18,23 @@ import { actSelectRecord } from './features/surf-instrument-operations/act_selec
 
 export default function App() {
   const store = useCalibraTrackStore();
+  const {
+    addInstrument,
+    addReading,
+    clearFilters,
+    retryLoad,
+    selectedRecord,
+    selectRecord,
+    setActivePanel,
+    setActiveRoute,
+    updateSelectedStatus,
+  } = store;
 
   const bridgeSnapshot = useMemo(
     () => ({
       activeScreen: store.activeScreen,
       activeRoute: store.activeRoute,
-      selectedRecord: store.selectedRecord,
+      selectedRecord,
       counts: store.counts,
       storageStatus: store.storageStatus,
       lastError: store.lastError,
@@ -35,7 +46,7 @@ export default function App() {
       store.activeScreen,
       store.counts,
       store.lastError,
-      store.selectedRecord,
+      selectedRecord,
       store.storageStatus,
     ],
   );
@@ -46,63 +57,63 @@ export default function App() {
 
   const operationsActions = useMemo<Partial<Record<InstrumentOperationsCalibratrackBenchR6x2ActionId, () => void>>>(
     () => ({
-      'new-calibration-1': () => store.setActiveRoute('calibration-log'),
-      'button-2-2': () => store.setActiveRoute('reports'),
-      'button-3-3': () => store.setActiveRoute('standards'),
-      'certify-4': () => store.updateSelectedStatus('certified'),
-      'add-reading-5': store.addReading,
-      'add-instrument-6': () => actCreateRecord(store),
-      'status-7': () => store.updateSelectedStatus('in-progress'),
-      'technician-8': () => store.setActiveRoute('inventory'),
-      'date-range-9': () => store.setActiveRoute('calibration-log'),
-      'edit-10': () => actSelectRecord(store, 'edit-10'),
-      'edit-11': () => actSelectRecord(store, 'edit-11'),
-      'edit-12': () => actSelectRecord(store, 'edit-12'),
-      'edit-13': () => actSelectRecord(store, 'edit-13'),
-      'button-14-14': () => store.setActiveRoute('support'),
-      'button-15-15': () => store.setActiveRoute('archive'),
-      'dashboard-1': () => actSearchRecords(store, 'dashboard-1'),
-      'inventory-2': () => actSearchRecords(store, 'inventory-2'),
-      'calibration-log-3': () => actSearchRecords(store, 'calibration-log-3'),
-      'reports-4': () => actSearchRecords(store, 'reports-4'),
-      'standards-5': () => actSearchRecords(store, 'standards-5'),
-      'support-6': () => actSearchRecords(store, 'support-6'),
-      'archive-7': () => actSearchRecords(store, 'archive-7'),
+      'new-calibration-1': () => setActiveRoute('calibration-log'),
+      'button-2-2': () => setActiveRoute('reports'),
+      'button-3-3': () => setActiveRoute('standards'),
+      'certify-4': () => updateSelectedStatus('certified'),
+      'add-reading-5': addReading,
+      'add-instrument-6': () => actCreateRecord({ addInstrument }),
+      'status-7': () => updateSelectedStatus('in-progress'),
+      'technician-8': () => setActiveRoute('inventory'),
+      'date-range-9': () => setActiveRoute('calibration-log'),
+      'edit-10': () => actSelectRecord({ selectRecord }, 'edit-10'),
+      'edit-11': () => actSelectRecord({ selectRecord }, 'edit-11'),
+      'edit-12': () => actSelectRecord({ selectRecord }, 'edit-12'),
+      'edit-13': () => actSelectRecord({ selectRecord }, 'edit-13'),
+      'button-14-14': () => setActiveRoute('support'),
+      'button-15-15': () => setActiveRoute('archive'),
+      'dashboard-1': () => actSearchRecords({ setActiveRoute }, 'dashboard-1'),
+      'inventory-2': () => actSearchRecords({ setActiveRoute }, 'inventory-2'),
+      'calibration-log-3': () => actSearchRecords({ setActiveRoute }, 'calibration-log-3'),
+      'reports-4': () => actSearchRecords({ setActiveRoute }, 'reports-4'),
+      'standards-5': () => actSearchRecords({ setActiveRoute }, 'standards-5'),
+      'support-6': () => actSearchRecords({ setActiveRoute }, 'support-6'),
+      'archive-7': () => actSearchRecords({ setActiveRoute }, 'archive-7'),
     }),
-    [store],
+    [addInstrument, addReading, selectRecord, setActiveRoute, updateSelectedStatus],
   );
 
   const editorActions = useMemo<Partial<Record<InstrumentEditorCalibratrackBenchR6x2ActionId, () => void>>>(
     () => ({
-      'button-1-1': () => store.setActivePanel('operations'),
-      'cancel-2': () => actCancelEdit(store),
-      'save-instrument-3': () => actSaveRecord(store),
-      'button-4-4': store.addReading,
-      'button-5-5': () => store.updateSelectedStatus('due'),
-      'button-6-6': () => store.updateSelectedStatus('archived'),
+      'button-1-1': () => setActivePanel('operations'),
+      'cancel-2': () => actCancelEdit({ setActivePanel }),
+      'save-instrument-3': () => actSaveRecord({ selectedRecord, setActivePanel, updateSelectedStatus }),
+      'button-4-4': addReading,
+      'button-5-5': () => updateSelectedStatus('due'),
+      'button-6-6': () => updateSelectedStatus('archived'),
     }),
-    [store],
+    [addReading, selectedRecord, setActivePanel, updateSelectedStatus],
   );
 
   const recoveryActions = useMemo<Partial<Record<EmptyAndErrorRecoveryCalibratrackBenchR6x2ActionId, () => void>>>(
     () => ({
-      'new-calibration-1': () => store.setActiveRoute('calibration-log'),
-      'add-reading-2': store.addReading,
-      'certify-3': () => store.updateSelectedStatus('certified'),
-      'button-4-4': () => store.setActiveRoute('support'),
-      'button-5-5': () => store.setActiveRoute('standards'),
-      'retry-load-6': () => actRetryLoad(store),
-      'add-instrument-7': () => actCreateRecord(store),
-      'clear-all-filters-8': store.clearFilters,
-      'dashboard-1': () => actSearchRecords(store, 'dashboard-1'),
-      'inventory-2': () => actSearchRecords(store, 'inventory-2'),
-      'calibration-log-3': () => actSearchRecords(store, 'calibration-log-3'),
-      'reports-4': () => actSearchRecords(store, 'reports-4'),
-      'standards-5': () => actSearchRecords(store, 'standards-5'),
-      'support-6': () => actSearchRecords(store, 'support-6'),
-      'archive-7': () => actSearchRecords(store, 'archive-7'),
+      'new-calibration-1': () => setActiveRoute('calibration-log'),
+      'add-reading-2': addReading,
+      'certify-3': () => updateSelectedStatus('certified'),
+      'button-4-4': () => setActiveRoute('support'),
+      'button-5-5': () => setActiveRoute('standards'),
+      'retry-load-6': () => actRetryLoad({ retryLoad }),
+      'add-instrument-7': () => actCreateRecord({ addInstrument }),
+      'clear-all-filters-8': clearFilters,
+      'dashboard-1': () => actSearchRecords({ setActiveRoute }, 'dashboard-1'),
+      'inventory-2': () => actSearchRecords({ setActiveRoute }, 'inventory-2'),
+      'calibration-log-3': () => actSearchRecords({ setActiveRoute }, 'calibration-log-3'),
+      'reports-4': () => actSearchRecords({ setActiveRoute }, 'reports-4'),
+      'standards-5': () => actSearchRecords({ setActiveRoute }, 'standards-5'),
+      'support-6': () => actSearchRecords({ setActiveRoute }, 'support-6'),
+      'archive-7': () => actSearchRecords({ setActiveRoute }, 'archive-7'),
     }),
-    [store],
+    [addInstrument, addReading, clearFilters, retryLoad, setActiveRoute, updateSelectedStatus],
   );
 
   return (
@@ -113,7 +124,7 @@ export default function App() {
           <span>Panel: {store.activePanel}</span>
           <span>Records: {store.counts.total}</span>
           <span>Storage: {store.storageStatus}</span>
-          {store.selectedRecord ? <span>Selected: {store.selectedRecord.assetTag}</span> : <span>No selection</span>}
+          {selectedRecord ? <span>Selected: {selectedRecord.assetTag}</span> : <span>No selection</span>}
           {store.lastError ? <strong>{store.lastError}</strong> : null}
         </div>
 
